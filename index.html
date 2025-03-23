@@ -234,7 +234,7 @@
                     divs.forEach(div => {
                         listaDivs += div.id ? `- ${div.id}\n` : "- (sem id)\n";
                     });
-                    outputEntrada.innerHTML = listaDivs;
+                    alert(listaDivs);
                 } else if (comando.startsWith("// import#perm ")) {
                     let nomeArquivo = comando.replace("// import#perm ", "").trim();
 
@@ -284,7 +284,7 @@
                         let value = localStorage.getItem(key);
                         listaLocalStorage += `${key}: ${value}\n`;
                     }
-                    outputEntrada.innerHTML = listaLocalStorage;
+                   alert(listaLocalStorage);
                 } else if (comando.startsWith("// li$$dada$$%")) {
                     let arquivosImportados = JSON.parse(localStorage.getItem("importedFiles")) || [];
                     let listaArquivos = arquivosImportados.join(",\n");
