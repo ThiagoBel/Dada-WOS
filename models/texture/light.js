@@ -1,0 +1,1 @@
+document.getElementById('Dada').style.background = "linear-gradient(to top right, black 70%, white 100%)";
