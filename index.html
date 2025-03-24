@@ -138,7 +138,7 @@
                 <div id="apps">
                     <div id="TJ">
                         <fieldset>
-                            <legend>Terminal</legend>
+                            <legend>.Terminal.</legend>
                             <textarea spellcheck="false" class="app" id="tj">alert("Hello, World!");</textarea>
                         </fieldset>
                         <div id="OutputTJ">
@@ -151,7 +151,7 @@
         </div>
     </div>
     <script>
-        let systemName = "DadaWOS";
+        let systemName = "Dada";
         var processSystem = 0;
         var $$dada$$ = document.getElementById('outputEntrada');
 
@@ -302,10 +302,11 @@
             }
         }
         tj.addEventListener('keydown', (event) => {
-            if (event.key === "Enter" && !event.shiftKey) {
-                execc();
-            }
-        });
+    const isMobile = /Mobi|Android/i.test(navigator.userAgent);
+    if (event.key === "Enter" && !event.shiftKey && !isMobile) {
+        execc();
+    }
+});
 
         setInterval(() => {
             if (localStorage.getItem("terminalSave") === "") {
