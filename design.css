@@ -1,0 +1,113 @@
+body {
+    display: grid;
+    place-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    overflow: hidden;
+}
+
+#tudo {
+    height: 100vh;
+    width: 100vw;
+    position: relative;
+}
+
+#Dada {
+    background-color: black;
+    color: white;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    user-select: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2vw;
+    box-sizing: border-box;
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+progress {
+    appearance: none;
+    background-color: black;
+    width: 100%;
+    height: 20px;
+}
+
+progress::-webkit-progress-bar {
+    background-color: rgb(135, 135, 135);
+}
+
+progress::-webkit-progress-value {
+    background-color: white;
+}
+
+#apps {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    gap: 10px;
+}
+
+.app {
+    background-color: rgba(0, 0, 0, 0);
+    color: white;
+    border: 2px solid white;
+    resize: none;
+    font-size: 1.2em;
+    width: 600px;
+    max-width: 700px;
+    height: 350px;
+    box-sizing: border-box;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+#OutputTJ {
+    background-color: rgba(0, 0, 0, 0);
+    color: white;
+    border: 1px solid white;
+    resize: none;
+    font-size: 1.2em;
+    width: 100%;
+    max-width: 100%;
+    height: 90px;
+    box-sizing: border-box;
+    padding: 10px;
+    user-select: text;
+}
+
+#loadingScene {
+    font-size: xx-large;
+}
+
+#loadingScene,
+#desktop {
+    display: none;
+    width: 100%;
+}
+
+#loadingScene.active,
+#desktop.active {
+    display: block;
+}
+
+@media screen and (max-width: 600px) {
+    #Dada {
+        padding: 5vw;
+    }
+
+    .app {
+        font-size: 1em;
+        width: 95%;
+    }
+
+    progress {
+        height: 15px;
+    }
+}

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Docs - Dada</title>
+    <style>
+        body {
+            display: grid;
+            place-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Verdana', Geneva, Tahoma, sans-serif;
+            background-color: #121212;
+            color: white;
+            line-height: 1.6;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 1rem;
+            text-align: center;
+
+        }
+
+        h2 {
+            font-size: 1.75em;
+            margin-top: 2rem;
+            text-decoration: underline;
+        }
+
+        p {
+            font-size: 1.2em;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        pre {
+            background-color: rgb(51, 51, 51);
+            padding: 1rem;
+            border-radius: 5px;
+            width: 90%;
+            max-width: 800px;
+            overflow-x: auto;
+            font-size: 1.1em;
+            margin-bottom: 5rem;
+        }
+
+        .command {
+            background-color: rgb(112, 112, 172);
+            border-radius: 1px;
+            font-family: 'Courier New', monospace;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Documentação dos Comandos do Dada</h1>
+    <p>O sistema Dada suporta diversos comandos que podem ser digitados no terminal para executar ações específicas.</p>
+
+    <h1>Terminal</h1>
+    <hr>
+    <h2>1. Comandos de Sistema</h2>
+    <pre><span class="command">// reset$$dada$$%</span>
+Descrição: Reinicia o sistema, apagando algumas configurações.</pre>
+    <pre><span class="command">// reset#cmd#in#enter$$dada$$%</span>
+Descrição: Reinicia o cmd toda vez que executa.</pre>
+    <pre><span class="command">// no#reset#cmd#in#enter$$dada$$%</span>
+Descrição: Não reinicia o cmd toda vez que executa.</pre>
+
+    <pre><span class="command">// reload#but#no#load$$dada$$%</span>
+Descrição: Recarrega a página pulando a tela de carregamento.</pre>
+
+    <h2>2. Comandos de Aparência</h2>
+    <pre><span class="command">// remove#css$$dada$$%</span>
+Descrição: Remove os estilos CSS da página.</pre>
+
+    <pre><span class="command">// remove#cmd$$dada$$%</span>
+Descrição: Remove o terminal da página.</pre>
+
+    <h2>3. Comandos de Configuração</h2>
+    <pre><span class="command">// tester#mode$$dada$$%</span>
+Descrição: Ativa o modo de teste, destacando os elementos da página com bordas vermelhas.</pre>
+    <pre><span class="command">// exit#tester#mode$$dada$$%</span>
+Descrição: Sai do modo de teste.</pre>
+
+    <h2>4. Comandos de Importação e Scripts</h2>
+    <pre><span class="command">// import &lt;arquivo.js&gt;</span>
+Descrição: Importa e executa um arquivo JavaScript externo/interno.</pre>
+    <pre><span class="command">// import#perm &lt;arquivo.js&gt;</span>
+Descrição: Importa permanentemente e executa um arquivo JavaScript externo/interno.</pre>
+    <pre><span class="command">// reset#imports#perm$$dada$$%</span>
+Descrição: Remove todos os imports.</pre>
+    <pre><span class="command">// noimport#perm &lt;arquivo.js&gt;</span>
+Descrição: Remove o import específico.</pre>
+
+    <h2>5. Comandos de Informações</h2>
+    <pre><span class="command">// la$$dada$$%</span>
+Descrição: Lista todas as divs do sistema.</pre>
+    <pre><span class="command">// li$$dada$$%</span>
+Descrição: Lista todas as importações do sistema.</pre>
+<pre><span class="command">// lf$$dada$$%</span>
+Descrição: Lista qual favicon está sendo usado (usado pelo comando do sistema).</pre>
+    <pre><span class="command">// ll$$dada$$%</span>
+Descrição: Lista todos os localStorages do sistema.</pre>
+
+    <h2>6. Favicon</h2>
+    <pre><span class="command">// favicon &lt;arquivo.ico&gt;</span>
+Descrição: Muda o favicon.</pre>
+<pre><span class="command">// favicon#perm &lt;arquivo.ico&gt;</span>
+Descrição: Muda o favicon permanentemente.</pre>
+    <pre><span class="command">// nofavicon$$dada$$%</span>
+Descrição: Remove o favicon.</pre>
+
+    <h2>7. Comandos Diversos</h2>
+    <pre><span class="command">// title &lt;novo título&gt;</span>
+Descrição: Altera o título da página.</pre>
+
+    <h1>Dev</h1>
+    <hr>
+
+    <h2>1. Documents</h2>
+    <pre><span class="command">document.querySelector('html')</span>
+Descrição: HTML.</pre>
+    <pre><span class="command">document.getElementById('Dada')</span>
+Descrição: Sistema Dada.</pre>
+    <pre><span class="command">document.getElementById('desktop')</span>
+Descrição: Desktop.</pre>
+    <pre><span class="command">document.getElementById('loadingScene')</span>
+Descrição: Tela de carregamento.</pre>
+    <pre><span class="command">document.getElementById('ff')</span>
+Descrição: Tela de sistema deletado.</pre>
+    <pre><span class="command">document.getElementById('tj')</span>
+Descrição: Valor do terminal.</pre>
+
+    <h2>2. Partes importantes</h2>
+    <pre><span class="command">tj.value</span>
+Descrição: Valor do terminal.</pre>
+</body>
+
+</html>
