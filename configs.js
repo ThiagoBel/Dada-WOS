@@ -60,6 +60,18 @@ function execc() {
     } else if (comando.startsWith("// title ")) {
         let novoTitulo = comando.replace("// title ", "").trim();
         document.querySelector('title').innerHTML = `${novoTitulo}`;
+    } else if (comando.startsWith("// title#perm ")) {
+        let novoTituloPerm = comando.replace("// title#perm ", "").trim();
+        if (novoTituloPerm) {
+            localStorage.setItem("permanentTitle", novoTituloPerm);
+            document.title = novoTituloPerm;
+            outputEntrada.innerHTML = `Título permanente definido como: ${novoTituloPerm}`;
+        } else {
+            outputEntrada.innerHTML = "Erro: O título não pode estar vazio.";
+        }
+    } else if (comando.startsWith("// notitle$$dada$$%")) {
+        localStorage.removeItem("permanentTitle");
+        outputEntrada.innerHTML = "Titulo removido, recarregue a página para ver.";
     } else if (tj.value == "// remove#css$$dada$$%") {
         document.querySelector('style').remove();
     } else if (tj.value == "// remove#cmd$$dada$$%") {
@@ -145,47 +157,99 @@ function execc() {
     } else if (comando.startsWith("// favicon ")) {
         let urlFavicon = comando.replace("// favicon ", "").trim();
         let linkFavicon = document.querySelector("link[rel*='icon']");
-    
+
         if (!linkFavicon) {
             linkFavicon = document.createElement("link");
             linkFavicon.rel = "icon";
             document.head.appendChild(linkFavicon);
         }
-    
+
         linkFavicon.href = urlFavicon;
-    
+
         outputEntrada.innerHTML = `Favicon definido com sucesso!`;
     } else if (comando.startsWith("// favicon#perm ")) {
         let urlFavicon = comando.replace("// favicon#perm ", "").trim();
-    
+
         localStorage.setItem("permanentFavicon", urlFavicon);
-    
+
         let linkFavicon = document.querySelector("link[rel*='icon']");
         if (!linkFavicon) {
             linkFavicon = document.createElement("link");
             linkFavicon.rel = "icon";
             document.head.appendChild(linkFavicon);
         }
-    
+
         linkFavicon.href = urlFavicon;
-    
+
         outputEntrada.innerHTML = `Favicon permanente definido com sucesso!`;
     } else if (tj.value == "// nofavicon$$dada$$%") {
         localStorage.removeItem("permanentFavicon");
+        outputEntrada.innerHTML = "Favicon removido, recarregue a página para ver.";
+    } else if (tj.value == "// time$$dada$$%") {
+        let now = new Date();
+        alert(`${now.toLocaleString()}`);
+    } else if (tj.value == "// clear#cmd$$dada$$%") {
+        tj.value = "";
+    } else if (tj.value == "// clear#output$$dada$$%") {
+        outputEntrada.innerHTML = 0;
+    } else if (comando.startsWith("// calc ")) {
+        let expressao = comando.replace("// calc ", "").trim();
+
+        if (/^[0-9+\-*/().\s]+$/.test(expressao)) {
+            try {
+                let resultado = Function("return " + expressao)();
+                outputEntrada.innerHTML = `${resultado}`;
+            } catch (e) {
+                outputEntrada.innerHTML = "Erro na expressão!";
+            }
+        } else {
+            outputEntrada.innerHTML = "Expressão inválida! Use apenas números e operadores matemáticos.";
+        }
+    } else if (comando.startsWith("// random ")) {
+        let valores = comando.replace("// random ", "").trim().split(" ");
+        if (valores.length === 2) {
+            let min = parseInt(valores[0]);
+            let max = parseInt(valores[1]);
+            if (!isNaN(min) && !isNaN(max)) {
+                let randomNum = Math.floor(Math.random() * (max - min + 1)) + min;
+                outputEntrada.innerHTML = `${randomNum}`;
+            } else {
+                outputEntrada.innerHTML = "Erro: valores inválidos!";
+            }
+        } else {
+            outputEntrada.innerHTML = "Uso correto: // random [min] [max]";
+        }
+    } else if (comando.startsWith("// dt ")) {
+        let valorTerminalText = comando.replace("// dt ", "").trim().split(" ");
+
+        outputEntrada.innerHTML = `${valorTerminalText}`;
+    } else if (comando.startsWith("// rmvid ")) {
+        let idRemoverAlgo = comando.replace("// rmvid ", "").trim().split(" ");
+
+        document.getElementById(`${idRemoverAlgo}`).remove();
+    } else if (comando.startsWith("// rmvqr ")) {
+        let qrRemoverAlgo = comando.replace("// rmvqr ", "").trim().split(" ");
+
+        document.querySelector(`${qrRemoverAlgo}`).remove();
+    } else if (comando.startsWith("// rmvcs ")) {
+        let csRemoverAlgo = comando.replace("// rmvcs ", "").trim().split(" ");
+
+        document.querySelector(`.${csRemoverAlgo}`).remove();
     }
+
     if (localStorage.getItem("resetText") == "yes") {
         tj.value = "";
     }
     try {
         eval(comando);
-        outputEntrada.innerHTML = "0";
     } catch (e) {
-        outputEntrada.innerHTML = "1 (Erro na execução: " + e.message + ")";
+        outputEntrada.innerHTML = "Erro na execução: " + e.message;
     }
+
 }
 tj.addEventListener('keydown', (event) => {
     const isMobile = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
-    
+
     if (!isMobile && event.key === "Enter" && !event.shiftKey) {
         execc();
     }
@@ -198,6 +262,11 @@ setInterval(() => {
 }, 1500);
 
 window.onload = function () {
+    let permanentTitle = localStorage.getItem("permanentTitle");
+    if (permanentTitle) {
+        document.title = permanentTitle;
+    }
+
     let permanentFavicon = localStorage.getItem("permanentFavicon");
     if (permanentFavicon) {
         let linkFavicon = document.querySelector("link[rel*='icon']");
@@ -373,3 +442,4 @@ if (permanentFavicon) {
 execc();
 
 tj.value = aaaaaaaaaaaaaaaaaaa;
+outputEntrada.innerHTML = 0;
