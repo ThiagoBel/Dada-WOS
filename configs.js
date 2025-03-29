@@ -142,7 +142,7 @@ function execc() {
         window.open("help.html", "_blank");
     } else if (tj.value == "// doc" || tj.value == "doc") {
         window.open("doc.html", "_blank");
-    }else if (comando.startsWith("// favicon ")) {
+    } else if (comando.startsWith("// favicon ")) {
         let urlFavicon = comando.replace("// favicon ", "").trim();
         let linkFavicon = document.querySelector("link[rel*='icon']");
     
@@ -155,9 +155,7 @@ function execc() {
         linkFavicon.href = urlFavicon;
     
         outputEntrada.innerHTML = `Favicon definido com sucesso!`;
-    }
-    
-    else if (comando.startsWith("// favicon#perm ")) {
+    } else if (comando.startsWith("// favicon#perm ")) {
         let urlFavicon = comando.replace("// favicon#perm ", "").trim();
     
         localStorage.setItem("permanentFavicon", urlFavicon);
@@ -172,9 +170,7 @@ function execc() {
         linkFavicon.href = urlFavicon;
     
         outputEntrada.innerHTML = `Favicon permanente definido com sucesso!`;
-    }
-    
-    else if (tj.value == "// nofavicon$$dada$$%") {
+    } else if (tj.value == "// nofavicon$$dada$$%") {
         localStorage.removeItem("permanentFavicon");
     }
     if (localStorage.getItem("resetText") == "yes") {
@@ -188,7 +184,9 @@ function execc() {
     }
 }
 tj.addEventListener('keydown', (event) => {
-    if (event.key === "Enter" && !event.shiftKey) {
+    const isMobile = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+    
+    if (!isMobile && event.key === "Enter" && !event.shiftKey) {
         execc();
     }
 });
