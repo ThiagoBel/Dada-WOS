@@ -41,4 +41,5 @@
 
 - Etc
 
-[Testar Dada](https://thiagobel.github.io/Dada-WOS/)
+<a href="https://thiagobel.github.io/Dada-WOS/">Testar Dada</a><br>
+<a href="https://thiagobel.github.io/Dada-WOS/doc.html">Ver Doc</a>
