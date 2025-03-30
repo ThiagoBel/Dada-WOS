@@ -219,9 +219,9 @@ function execc() {
         } else {
             outputEntrada.innerHTML = "Uso correto: // random [min] [max]";
         }
-    } else if (comando.startsWith("// dt ")) {
-        let valorTerminalText = comando.replace("// dt ", "").trim().split(" ");
-
+    }else if (comando.startsWith("// dt ")) {
+        let valorTerminalText = comando.replace("// dt ", "").trim().split(" ").join(" ");
+    
         outputEntrada.innerHTML = `${valorTerminalText}`;
     } else if (comando.startsWith("// rmvid ")) {
         let idRemoverAlgo = comando.replace("// rmvid ", "").trim().split(" ");
