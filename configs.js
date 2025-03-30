@@ -1,6 +1,7 @@
 let systemName = "Dada";
 var processSystem = 0;
 var $$dada$$ = document.getElementById('outputEntrada');
+let vers = "1.004";
 
 let elementos = document.querySelectorAll('*');
 setInterval(() => {
@@ -235,6 +236,8 @@ function execc() {
         let csRemoverAlgo = comando.replace("// rmvcs ", "").trim().split(" ");
 
         document.querySelector(`.${csRemoverAlgo}`).remove();
+    } else if (tj.value == "// vers$$dada$$%") {
+        outputEntrada.innerHTML = vers;
     }
 
     if (localStorage.getItem("resetText") == "yes") {
