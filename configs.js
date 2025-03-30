@@ -219,7 +219,7 @@ function execc() {
         } else {
             outputEntrada.innerHTML = "Uso correto: // random [min] [max]";
         }
-    }else if (comando.startsWith("// dt ")) {
+    } else if (comando.startsWith("// dt ")) {
         let valorTerminalText = comando.replace("// dt ", "").trim().split(" ").join(" ");
     
         outputEntrada.innerHTML = `${valorTerminalText}`;
